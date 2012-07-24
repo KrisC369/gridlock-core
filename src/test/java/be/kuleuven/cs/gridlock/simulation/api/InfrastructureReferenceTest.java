@@ -1,6 +1,3 @@
-/*
- *  Part of the Skout Application by Rubato
- */
 package be.kuleuven.cs.gridlock.simulation.api;
 
 import org.junit.After;
@@ -11,8 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 
 /**
- *
- * @author rutger
+ * @author Rutger Claes <rutger.claes@cs.kuleuven.be>
  */
 public abstract class InfrastructureReferenceTest<T> {
 

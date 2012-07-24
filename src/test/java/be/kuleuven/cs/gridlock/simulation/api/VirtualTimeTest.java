@@ -1,6 +1,3 @@
-/*
- *  Part of the Skout Application by Rubato
- */
 package be.kuleuven.cs.gridlock.simulation.api;
 
 import java.util.Date;
@@ -13,7 +10,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author rutger
+ * @author Rutger Claes <rutger.claes@cs.kuleuven.be>
  */
 public class VirtualTimeTest {
 

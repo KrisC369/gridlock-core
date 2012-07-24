@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package be.kuleuven.cs.gridlock.utilities;
 
 import java.util.List;
@@ -13,7 +9,7 @@ import org.apache.commons.math3.random.RandomData;
  * Helper class allowing the selection of one object out of a collection of
  * objects based on a per-object probability.
  *
- * @author rutger
+ * @author Rutger Claes <rutger.claes@cs.kuleuven.be>
  */
 public class SelectionWheel<T> {
 
