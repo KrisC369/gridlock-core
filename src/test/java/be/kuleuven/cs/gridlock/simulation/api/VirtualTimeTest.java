@@ -1,10 +1,6 @@
 package be.kuleuven.cs.gridlock.simulation.api;
 
 import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -101,7 +97,29 @@ public class VirtualTimeTest {
      */
     @Test
     public void testToDate() {
-        fail( "Not implemented" );
+        {
+            VirtualTime base = VirtualTime.createVirtualTime(0);
+            Date date = base.toDate();
+            assertEquals(base.getSeconds()*1000, date.getTime(), 0);
+        }
+        
+        {
+            VirtualTime base = VirtualTime.createVirtualTime(50);
+            Date date = base.toDate();
+            assertEquals(base.getSeconds()*1000, date.getTime(), 0);
+        }
+        
+        {
+            VirtualTime base = VirtualTime.createVirtualTime(50.2324523);
+            Date date = base.toDate();
+            assertEquals(base.getSeconds()*1000, date.getTime(), 1);
+        }
+        
+        {
+            VirtualTime base = VirtualTime.createVirtualTime(50.999999999999);
+            Date date = base.toDate();
+            assertEquals(base.getSeconds()*1000, date.getTime(), 1);
+        }
     }
 
     /**
@@ -109,7 +127,29 @@ public class VirtualTimeTest {
      */
     @Test
     public void testCreateVirtualTimeFromLong() {
-        fail( "Not implemented" );
+        {
+            Long millis = 5000L; 
+            double sec = (int) (millis/1000);
+            VirtualTime base = VirtualTime.createVirtualTime(millis);
+            assertEquals(base.getSeconds(), sec, 0);
+        }
+        
+        {
+            Long millis = 0L; 
+            double sec = (int) (millis/1000);
+            VirtualTime base = VirtualTime.createVirtualTime(millis);
+            assertEquals(base.getSeconds(), sec, 0);
+        }
+        
+        {
+            try {
+                Long millis = -30L; 
+                VirtualTime base = VirtualTime.createVirtualTime(millis);
+                fail("No exception thrown");
+            } catch (Error e){
+                //fallthrough
+            }
+        }
     }
 
     /**
@@ -117,6 +157,26 @@ public class VirtualTimeTest {
      */
     @Test
     public void testCreateVirtualTimeFromDouble() {
-        fail( "Not implemented" );
-    }
+        {
+           double sec = 0;
+           VirtualTime base = VirtualTime.createVirtualTime(sec);
+           assertEquals(base.getSeconds(), sec, 0);
+        }
+        
+        {
+           double sec = 5020.392;
+           VirtualTime base = VirtualTime.createVirtualTime(sec);
+           assertEquals(base.getSeconds(), sec, 0);
+        }
+        
+        {
+            try {
+                double sec = -30.42; 
+                VirtualTime base = VirtualTime.createVirtualTime(sec);
+                fail("No exception thrown");
+            } catch (Error e){
+                //fallthrough
+            }
+        }
+     }
 }
